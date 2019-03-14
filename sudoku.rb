@@ -1,3 +1,4 @@
+require 'byebug'
 require_relative "board"
 
 class SudokuGame
@@ -45,11 +46,12 @@ class SudokuGame
   def parse_val(string)
     Integer(string)
   end
-
+  
   def play_turn
+    #debugger
     board.render
-    val = get_pos
-    pos = get_val
+    pos = get_pos
+    val = get_val
     board[pos] = val
   end
 
