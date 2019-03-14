@@ -1,10 +1,10 @@
 require "colorize"
 
-puts "MUAHAHA.  The dastardly unexpected end statement.\n".red
-puts "Do NOT try to solve this error by going one method at a time and looking for an 'end'.\n".red
-puts "Instead, comment out half of the bad file at a time until the error changes.  Keep narrowing down from there.".red
-puts ""
-puts "Does this approach feel familiar?  The approach is a version of binary search.\n\n".red
+#puts "MUAHAHA.  The dastardly unexpected end statement.\n".red
+#puts "Do NOT try to solve this error by going one method at a time and looking for an 'end'.\n".red
+#puts "Instead, comment out half of the bad file at a time until the error changes.  Keep narrowing down from there.".red
+#puts ""
+#puts "Does this approach feel familiar?  The approach is a version of binary search.\n\n".red
 
 require_relative "board"
 
@@ -36,36 +36,36 @@ class SudokuGame
     pos
   end
 
-  def get_val
-    val = nil
-    until val && valid_val?(val)
-      puts "Please enter a value between 1 and 9 (0 to clear the tile)"
-      print "> "
-      val = parse_val(gets.chomp)
-    end
-    val
-  end
+ def get_val
+   val = nil
+   until val && valid_val?(val)
+     puts "Please enter a value between 1 and 9 (0 to clear the tile)"
+     print "> "
+     val = parse_val(gets.chomp)
+   end
+   val
+ end
 
-  def parse_pos(string)
-    string.split(",").map { |char| Integer(char) }
-  end
+ def parse_pos(string)
+   string.split(",").map { |char| Integer(char) }
+ end
 
-  def parse_val(string)
-    Integer(string)
-  end
+ def parse_val(string)
+   Integer(string)
+ end
 
-  def play_turn
-    board.render
-    pos = get_pos
-    val = get_val
-    board[pos] = val
-  end
+ def play_turn
+   board.render
+   pos = get_pos
+   val = get_val
+   board[pos] = val
+ end
 
-  def run
-    play_turn until solved?
-    board.render
-    puts "Congratulations, you win!"
-  end
+ def run
+   play_turn until solved?
+   board.render
+   puts "Congratulations, you win!"
+ end
 
   def solved?
     board.solved?
